@@ -32,12 +32,39 @@ function onReady() {
     // attach the checkbox to the li
     newLi.appendChild(checkbox);
 
+    // create a delete button
+    let deleteBtn = document.createElement('button');
+
+    //add html to button
+    deleteBtn.type = 'button';
+    // set the title of button
+    deleteBtn.textContent = 'click me';
+    deleteBtn.id = 'deleteBtn';
+
+    //click event for delete button
+    deleteBtn.addEventListener('click', (event) => {
+      //default is reloading the page
+      event.preventDefault();
+
+      console.log('delete clicked');
+
+      //remove li
+      toDoList.removeChild(newLi);
+    });
+
+    // attach delete button
+    newLi.appendChild(deleteBtn);
+
     // attach the li to the ul
     toDoList.appendChild(newLi);
 
     //empty the input
     newToDoText.value = '';
   });
+}
+
+function deleteListItem(){
+  alert('delete clicked');
 }
 
 window.onload = function() {
